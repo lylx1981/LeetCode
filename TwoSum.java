@@ -1,4 +1,4 @@
-public class Solution {
+public class TwoSum {
 		/*
 		 * @param numbers : An array of Integer
 		 * 
