@@ -6,6 +6,11 @@ public class TwoSum {
 	 * 
 	 * @return : [index1 + 1, index2 + 1] (index1 < index2) numbers=[2, 7,
 	 * 11, 15], target=9 return [1, 2]
+	 
+	 * Company Tags: LinkedIn, Uber, Airbnb, Facebook, Amazon, Microsoft, Apple, Yahoo, Dropbox, Bloomberg, Yelp, Adobe
+	 * Tags: Array, Hash Table
+	 * Similar Problems: (M) 3Sum, (M) 4Sum, (M) Two Sum II - Input array is sorted, (E) Two Sum III - Data structure
+	 * design
 	 */
      
          
