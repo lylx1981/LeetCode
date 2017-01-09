@@ -1,12 +1,12 @@
 public class TwoSum {
-		/*
-		 * @param numbers : An array of Integer
-		 * 
-		 * @param target : target = numbers[index1] + numbers[index2]
-		 * 
-		 * @return : [index1 + 1, index2 + 1] (index1 < index2) numbers=[2, 7,
-		 * 11, 15], target=9 return [1, 2]
-		 */
+	/*
+	 * @param numbers : An array of Integer
+	 * 
+	 * @param target : target = numbers[index1] + numbers[index2]
+	 * 
+	 * @return : [index1 + 1, index2 + 1] (index1 < index2) numbers=[2, 7,
+	 * 11, 15], target=9 return [1, 2]
+	 */
      
          
     /*
