@@ -1,0 +1,30 @@
+class MergeSortedArray {
+    /**
+     * @param A: sorted integer array A which has m elements, 
+     *           but size of A is m+n
+     * @param B: sorted integer array B which has n elements
+     * @return: void
+     */
+     
+    //因为本题有 in-place 的限制，故必须从数组末尾的两个元素开始比较；否则就会产生挪动，一旦挪动就会是 O(n^2)的。 
+    /*
+    做法：自尾部向首部逐个比较两个数组内的元素，取较大的置于数组 A 中。由于 A 的容量较 B 大，
+    故最后如果退出了循环但B仍然还有元素没有合并进A中，则仅需处理 B 中的元素，因为 A 中的元素已经在 A 中，无需处理。
+    */
+    public void mergeSortedArray(int[] A, int m, int[] B, int n) {
+        int i = m - 1; 
+        int j = n - 1;
+        int index = m + n - 1;
+        while (i >= 0 && j >= 0) {
+            if (A[i] > B[j]) {
+                A[index--] = A[i--];
+            } else {
+                A[index--] = B[j--];
+            }
+        }
+
+        while (j >= 0) {
+            A[index--] = B[j--];
+        }
+    }
+}
