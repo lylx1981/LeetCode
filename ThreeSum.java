@@ -11,7 +11,7 @@ public class ThreeSum {
   跳过重复数字的逻辑 重点看一下 
 
   */
-	public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+    public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
 		
 		ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
 		if(num == null || num.length < 3) {
@@ -55,4 +55,5 @@ public class ThreeSum {
 			}
 		}
 		return rst;
-	}
+	}    
+}
