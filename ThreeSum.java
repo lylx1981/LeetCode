@@ -19,10 +19,13 @@ public class ThreeSum {
 		}
 		Arrays.sort(num);
 		for (int i = 0; i < num.length - 2; i++) {
-			if (i != 0 && num[i] == num[i - 1]) {
+			if (num[i] > 0) {
+              break; //提前结束，因为前两项已经〉0， 不需要再继续判断了
+            }
+            if (i != 0 && num[i] == num[i - 1]) {
 				continue; // to skip duplicate numbers; e.g [0,0,0,0]
 			}
-
+      
 			int left = i + 1;
 			int right = num.length - 1;
 			if (num[i] + num[left] > 0) {
