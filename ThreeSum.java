@@ -25,6 +25,9 @@ public class ThreeSum {
 
 			int left = i + 1;
 			int right = num.length - 1;
+			if (num[i] + num[left] > 0) {
+			    break; //提前结束，因为前两项已经〉0， 不需要再继续判断了 			
+			}
 			while (left < right) {
 				int sum = num[left] + num[right] + num[i];
 				if (sum == 0) {
