@@ -29,7 +29,7 @@ public class ContainsDuplicate2 {
         Set<Integer> set = new HashSet<Integer>();
         for (int i = 0; i < nums.length; i++) {
             if (i > k) {
-                set.remove(nums[i - k - 1]);
+                set.remove(nums[i - k - 1]); //删除掉滑动窗口最前面那个
             }
             if (!set.add(nums[i])) {
                 return true;
