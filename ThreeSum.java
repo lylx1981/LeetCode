@@ -11,49 +11,49 @@ public class ThreeSum {
   跳过重复数字的逻辑 重点看一下 
 
   */
-    public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
-		
-		ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
-		if(num == null || num.length < 3) {
-			return rst;
+   public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+
+	ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
+	if(num == null || num.length < 3) {
+		return rst;
+	}
+	Arrays.sort(num);
+	for (int i = 0; i < num.length - 2; i++) {
+		if (num[i] > 0) {
+			break; //提前结束，因为前两项已经〉0， 不需要再继续判断了
 		}
-		Arrays.sort(num);
-		for (int i = 0; i < num.length - 2; i++) {
-			if (num[i] > 0) {
-              break; //提前结束，因为前两项已经〉0， 不需要再继续判断了
-            }
-            if (i != 0 && num[i] == num[i - 1]) {
-				continue; // to skip duplicate numbers; e.g [0,0,0,0]
-			}
-      
-			int left = i + 1;
-			int right = num.length - 1;
-			if (num[i] + num[left] > 0) {
-			    break; //提前结束，因为前两项已经〉0， 不需要再继续判断了 			
-			}
-			while (left < right) {
-				int sum = num[left] + num[right] + num[i];
-				if (sum == 0) {
-					ArrayList<Integer> tmp = new ArrayList<Integer>();
-					tmp.add(num[i]);
-					tmp.add(num[left]);
-					tmp.add(num[right]);
-					rst.add(tmp);
+		if (i != 0 && num[i] == num[i - 1]) {
+			continue; // to skip duplicate numbers; e.g [0,0,0,0]
+		}
+
+		int left = i + 1;
+		int right = num.length - 1;
+		if (num[i] + num[left] > 0) {
+			break; //提前结束，因为前两项已经〉0， 不需要再继续判断了 			
+		}
+		while (left < right) {
+			int sum = num[left] + num[right] + num[i];
+			if (sum == 0) {
+				ArrayList<Integer> tmp = new ArrayList<Integer>();
+				tmp.add(num[i]);
+				tmp.add(num[left]);
+				tmp.add(num[right]);
+				rst.add(tmp);
+				left++;
+				right--;
+				while (left < right && num[left] == num[left - 1]) { // to skip duplicates
 					left++;
-					right--;
-					while (left < right && num[left] == num[left - 1]) { // to skip duplicates
-						left++;
-					}
-					while (left < right && num[right] == num[right + 1]) { // to skip duplicates
-						right--;
-					}
-				} else if (sum < 0) {
-					left++;
-				} else {
+				}
+				while (left < right && num[right] == num[right + 1]) { // to skip duplicates
 					right--;
 				}
+			} else if (sum < 0) {
+				left++;
+			} else {
+				right--;
 			}
 		}
-		return rst;
-	}    
+	}
+	return rst;
+   } 
 }
