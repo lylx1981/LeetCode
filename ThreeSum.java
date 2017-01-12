@@ -47,7 +47,9 @@ public class ThreeSum {
 				while (left < right && num[right] == num[right + 1]) { // to skip duplicates
 					right--;
 				}
-			} else if (sum < 0) {
+			} 
+			//可能会出现左右摇摆的情况（也就是sum一会比target大，然后又比target小），但是一旦start>=end，循环就退出了。
+			else if (sum < 0) {
 				left++;
 			} else {
 				right--;
