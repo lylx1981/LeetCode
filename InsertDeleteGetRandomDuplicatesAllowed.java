@@ -1,4 +1,4 @@
-public class InsertDeleteGetRandomDuplicatesAllowed {
+public class RandomizedCollection {
     /*
       与之前的“ Insert Delete GetRandom O(1)”是姐妹题，
       这个题里面允许元素有重复，所以主要的改动在locs这个Hashmap里，原来（K，V）键值对里的V的值是K在ArrayList nums里的位置
