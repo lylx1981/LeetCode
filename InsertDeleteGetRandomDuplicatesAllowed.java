@@ -38,8 +38,8 @@ public class RandomizedCollection {
 	       locs.get(lastone).remove( nums.size()-1);
 	       locs.get(lastone).add(loc);
 	    }
-	    nums.remove(nums.size() - 1);
-	   
+	    nums.remove(nums.size() - 1); 	
+   
 	    if (locs.get(val).isEmpty()) locs.remove(val); //如果一个元素对应的位置Set空了，证明这个元素已经在nums里不存在了，则在Locs里删除相应的键值对
 	    return true;
     }
