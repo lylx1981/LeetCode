@@ -69,7 +69,7 @@ public class Solution {
 
         HashMap<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
         RandomListNode dummy = new RandomListNode(0);
-        RandomListNode pre = dummy, newNode;
+        RandomListNode pre = dummy, newNode; //pre一直指向新链表当前的最后一个元素。
         while (head != null) {
             if (map.containsKey(head)) {
                 newNode = map.get(head);
@@ -79,7 +79,7 @@ public class Solution {
             }
             pre.next = newNode;
 
-            if (head.random != null) {
+            if (head.random != null) { //只考虑Random不是null的这些情况即可
                 if (map.containsKey(head.random)) {
                     newNode.random = map.get(head.random);
                 } else {
