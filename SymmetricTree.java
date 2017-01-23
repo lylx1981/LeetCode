@@ -1,7 +1,7 @@
 
 public class SymmetricTree {
 
-    /** //方法一：非递归方法，用Stack，代码有点长，但是也比较好懂，基本思想就是一层一层考虑，并且每次把下一层应该对称的节点加进去，而不是从左往右加
+    /** //方法一A：非递归方法，用Stack，DFS,代码有点长，而且这里是用DFS，是最树的最外围向内部一点点验证，
      * Iterative. Stack. DFS.
      * Skip root since it's definitely symmetric.
      * Push root's children onto a stack if they both exists.
@@ -20,7 +20,7 @@ public class SymmetricTree {
         if (root.left == null || root.right == null) {
             return root.left == root.right;
         }
-        Deque<TreeNode> s = new ArrayDeque<>();
+        Deque<TreeNode> s = new ArrayDeque<>(); //这个类即可以用作一个Quene，也可以用作一个Stack。From Java Doc：This class is likely to be faster than Stack when used as a stack, and faster than LinkedList when used as a queue.
         s.push(root.left);
         s.push(root.right);
         while (!s.isEmpty()) {
@@ -45,8 +45,32 @@ public class SymmetricTree {
 
         return true;
     }
-
-    /**方法二：递归方法，更简单
+    /*
+     方法一B：也可以用Quene实现上述非递归方法，这样的话，就是BFS了，基本思想就是一层一层向下考虑，并且每次把下一层应该对称的节点加进去，而不是从左往右加
+    */
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null) return true;
+        Queue<TreeNode> queue = new LinkedList();
+        queue.offer(root.left);
+        queue.offer(root.right);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while(size > 0) {
+                TreeNode node1 = queue.poll();
+                TreeNode node2 = queue.poll();
+                size -= 2;
+                if (node1 == null && node2 == null) continue;
+                if (node1 == null || node2 == null || node1.val != node2.val) return false;
+                queue.offer(node1.left);
+                queue.offer(node2.right);
+                queue.offer(node1.right);
+                queue.offer(node2.left);
+            }
+        }
+        return true;
+    }
+    
+    /**方法二：递归方法，更简单
      * Recursive. DFS.
      * Depth first search both subtrees, n1 and n2.
      * If at least one node is null:
