@@ -13,7 +13,7 @@ public class SymmetricTree {
      * | Push their children onto stack for the next iteration:
      * |   In a symmetric way, n1.left and n2.right, then n1.right and n2.left.
      */
-    private boolean isSymmetric(TreeNode root) {
+    public boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
         }
@@ -55,7 +55,7 @@ public class SymmetricTree {
      * Check n1.left and n2.right.
      * Check n1.right and n2.left.
      */
-    private boolean isSymmetricRec(TreeNode root) {
+    public boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
         }
