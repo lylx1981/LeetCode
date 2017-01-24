@@ -12,6 +12,7 @@ class UniqueBST2 {
      * subtrees and combine them in all possible ways with the root.
      */
     public List<TreeNode> generateTrees(int n) {
+        if(n==0) return new Arraylist(); //源程序里没有这一句，但是不加这句，Leetcode过不去
         return genTrees(1, n);
     }
     
