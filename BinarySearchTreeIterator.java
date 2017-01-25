@@ -1,7 +1,4 @@
-public class Solution {
-
-    
-public class BinarySearchTreeIterator {
+public class BSTIterator {
 
     Deque<TreeNode> stack;
 
@@ -9,7 +6,7 @@ public class BinarySearchTreeIterator {
      * Simulate in-order traversal.
      * Push all left children into a Stack to get prepared.
      */
-    public BinarySearchTreeIterator(TreeNode root) {
+    public BSTIterator(TreeNode root) {
         stack = new ArrayDeque<>();
         pushAll(root);
     }
@@ -39,6 +36,4 @@ public class BinarySearchTreeIterator {
             root = root.left;
         }
     }
-}
-
 }
