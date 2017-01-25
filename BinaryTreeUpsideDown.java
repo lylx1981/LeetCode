@@ -37,37 +37,26 @@ public class Solution {
         root.right = null;
         return newRoot;
     }
-
-    /**
-     * Iterative.
-     * All right subtrees only have 1 node.
-     * Move down along the left children.
-     * While current node is not null:
-     * | Store the next left child.
-     * | Set current node's left to previous right.
-     * | Update right to current right.
-     * | Set current node's right to previous.
-     * | Move on by updating prev to curr, curr to next.
-     * Return prev.
-     */
-    public TreeNode upsideDownBinaryTreeB(TreeNode root) {
-        TreeNode curr = root;
-        TreeNode prev = null; // Previous root.
-        TreeNode next = null; // Next node to flip.
-        TreeNode right = null; // Previous right child.
-
-        while (curr != null) {
-            // Store next.
-            next = curr.left;
-            // Swap nodes.
-            curr.left = right; // Current left is previous right.
-            right = curr.right; // Update right.
-            curr.right = prev; // Current right is previous root.
-            // Move on.
-            prev = curr;
-            curr = next;
-        }
-        return prev;
+      
+    //迭代方法，O(1) space
+     //原理和上面一样，可以看Speadsheet 图，解释的非常清楚  
+   public TreeNode upsideDownBinaryTree(TreeNode root) {
+    TreeNode curr = root;
+    TreeNode next = null;
+    TreeNode temp = null;
+    TreeNode prev = null;
+    
+    while(curr != null) {
+        next = curr.left;
+        
+        // swapping nodes now, need temp to keep the previous right child
+        curr.left = temp;
+        temp = curr.right;
+        curr.right = prev;
+        
+        prev = curr;
+        curr = next;
     }
-
+    return prev;
+}  
 }
