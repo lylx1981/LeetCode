@@ -60,7 +60,7 @@ Helper函数就是对一个三位数进行发音，20以下因为发音比较特
         if (n == 0) {
             return ""; // Only one 0 is already handled as a special case.
         } else if (n < 20) { //《20的情况，因为发音完全不同，所以直接特殊处理即可
-            return LESS_THAN_TWENTY[20] + " "; // Note the blank is the space at the end.
+            return LESS_THAN_TWENTY[n] + " "; // Note the blank is the space at the end.
         } else if (n < 100) {
             return TENS[n / 10] + " " + helper(n % 10); // Note the space in between. //十位数发音求完后，现在对10求余，就是对个位数的发音了 
         } else {
