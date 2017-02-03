@@ -11,7 +11,7 @@ class MergeSortedArray {
     做法：自尾部向首部逐个比较两个数组内的元素，取较大的置于数组 A 中。由于 A 的容量较 B 大，
     故最后如果退出了循环但B仍然还有元素没有合并进A中，则仅需处理 B 中的元素，因为 A 中的元素已经在 A 中，无需处理。
     */
-    public void mergeSortedArray(int[] A, int m, int[] B, int n) {
+    public void merge(int[] A, int m, int[] B, int n) {
         int i = m - 1; 
         int j = n - 1;
         int index = m + n - 1;
