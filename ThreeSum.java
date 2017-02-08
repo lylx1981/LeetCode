@@ -11,9 +11,9 @@ public class ThreeSum {
   跳过重复数字的逻辑 重点看一下 
 
   */
-   public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
-
-	ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
+   public List<List<Integer>> threeSum(int[] num) {
+	List<List<Integer>> rst = new ArrayList<>();//    必须写成这样才可以过Leetcode	
+	//ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
 	if(num == null || num.length < 3) {
 		return rst;
 	}
