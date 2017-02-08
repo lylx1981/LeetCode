@@ -2,8 +2,34 @@
 
 
 */
+//Xu自己的代码
 
+public void connect(TreeLinkNode root) {
+        TreeLinkNode cur=root;
+        while(cur!=null){
+           
+            TreeLinkNode dummy = new TreeLinkNode(0);
+            TreeLinkNode cur2= dummy;
+            while(cur!=null){
+                
+                if(cur.left != null) {
+                    cur2.next = cur.left;
+                    cur2 = cur.left;
+                }
+                if(cur.right != null) {
+                    cur2.next = cur.right;
+                    cur2 = cur.right;
+                }
+                
+                cur = cur.next;
+            }
+            cur2.next = null;
+            cur= dummy.next;
+        }
+    }
+    
 
+//别人的代码
 public class Solution {
     
     //based on level order traversal
