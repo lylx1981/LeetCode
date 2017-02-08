@@ -1,9 +1,9 @@
 /*
 The idea is simple: store states of each row in the first of that row, and store states of each column in the first of that column. Because the state of row0 and the state of column0 would occupy the same cell, I let it be the state of row0, and use another variable "col0" for column0. In the first phase, use matrix elements to set states in a top-down way. In the second phase, use states to set matrix elements in a bottom-up way.
 */
-public class SetMatrixZeroes {
-   void setMatrixZeroes(vector<vector<int> > &matrix) {
-    int col0 = 1, rows = matrix.size(), cols = matrix[0].size();
+public class Solution {
+    public void setZeroes(int[][] matrix) {
+         int col0 = 1, rows = matrix.length, cols = matrix[0].length;
 
         for (int i = 0; i < rows; i++) {
             if (matrix[i][0] == 0) {
@@ -17,14 +17,15 @@ public class SetMatrixZeroes {
         }
     
         for (int i = rows - 1; i >= 0; i--) {
-            for (int j = cols - 1; j >= 1; j--) { // j只用判断到第1列即可，第0列用col0的值单独判断
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
-                    matrix[i][j] = 0;
-                }
-            }
-            if (col0 == 0) {
-                matrix[i][0] = 0;
-            }
+            for (int j = cols - 1; j >= 1; j--) { // j只用判断到第1列即可，第0列用col0的值单独判断
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+            if (col0 == 0) {
+                matrix[i][0] = 0;
+            }
         }
     }
+    
 }
