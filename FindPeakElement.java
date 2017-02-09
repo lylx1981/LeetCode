@@ -1,15 +1,17 @@
-class Solution {
-    /**
-     * @param A: An integers array.
-     * @return: return any of peek positions.
-     */
-    public int findPeak(int[] A) {
+public class Solution {
+public int findPeakElement(int[] A) {
         // write your code here
         int start = 1, end = A.length-2; // 1.使得答案在之间，2.后面while循环中不会出界
+    
+        if(A.length <= 1){
+            return 0;
+        }
         
       //处理特殊情况，两头的两个元素
+
         if (A[0] > A[1]) return 0;
-        if (A[A.length - 1] > A[A.length - 2]) return n - 1;
+        if (A[A.length - 1] > A[A.length - 2]) return A.length - 1;
+
         
         while(start + 1 <  end) {
             int mid = (start + end) / 2;
