@@ -29,15 +29,15 @@ class Triangle {
      * Pick the smaller one of next row and add it up to current level
      */
     public static int minimumTotal(List<List<Integer>> triangle) {
-        List<Integer> res = new ArrayList<Integer>(triangle.get(level));
         int level = triangle.size() - 1;
+        List<Integer> res = new ArrayList<Integer>(triangle.get(level));
         for (int i = level - 1; i >= 0; i--) { // start from second last row
             for (int j = 0; j <= i; j++) { // go through each node
-                //因为下一行每个孩子只会参与一次对上一行的某个元素的计算，所以只要这个孩子被用过了，它的值就不需要保留了，更新为上一行的新值即可。
-                //所以一共就需要一个一维数组就可以了（相比top-down的方法的优势），见如下表达
-                int res = Math.min(res.get(j), res.get(j + 1)) + triangle.get(i).get(j); // add the smaller one
-                //注意上面的这个变量应该改个其他名字，否则容易糊涂，比较叫temp,然后下面这行就变为res.set(j, temp)
-                res.set(j, res);
+                //因为下一行每个孩子只会参与一次对上一行的某个元素的计算，所以只要这个孩子被用过了，它的值就不需要保留了，更新为上一行的新值即可。
+                //所以一共就需要一个一维数组就可以了（相比top-down的方法的优势），见如下表达
+                int cur = Math.min(res.get(j), res.get(j + 1)) + triangle.get(i).get(j); // add the smaller one
+                //注意上面的这个变量应该改个其他名字，否则容易糊涂，比较叫temp,然后下面这行就变为res.set(j, temp)
+                res.set(j, cur);
             }
         }
         return res.get(0);
