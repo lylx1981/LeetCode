@@ -1,5 +1,4 @@
-/*思路： 这道题比较费劲，Leetcode最受欢迎的解法不是自己想到的，自己想的是和下面这个解法类似，有点像存储各种模式的意思，就是对于每个sentence里面的Word，我计算一下以这个Word开始一行的话，那么下一行应该开始的是哪个Word。把这个结果记录在nextIndex中。另外一个，如果Cols很大，可能造成以当前Worrd开始写这一行的话，可能写到Sentence末尾以后这一行还没有结束，那么我就要重新在从sentence的第0个Word开始写，同时我记录一下一共跨越了几次Stentence的最后一个Word。
-
+/*思路： 这道题比较费劲，
 
 This algorithm's idea is:
 to iteratively determine what would be each bit of the final result from left to right. And it narrows down the candidate group iteration by iteration. e.g. assume input are a,b,c,d,...z, 26 integers in total. In first iteration, if you found that a, d, e, h, u differs on the MSB(most significant bit), so you are sure your final result's MSB is set. Now in second iteration, you try to see if among a, d, e, h, u there are at least two numbers make the 2nd MSB differs, if yes, then definitely, the 2nd MSB will be set in the final result. And maybe at this point the candidate group shinks from a,d,e,h,u to a, e, h. Implicitly, every iteration, you are narrowing down the candidate group, but you don't need to track how the group is shrinking, you only cares about the final result.
