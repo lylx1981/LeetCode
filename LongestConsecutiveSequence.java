@@ -1,3 +1,26 @@
+//个人更倾向于这个Solution。思路：First turn the input into a set of numbers. That takes O(n) and then we can ask in O(1) whether we have a certain number.
+
+//Then go through the numbers. If the number x is the start of a streak (i.e., x-1 is not in the set), then test y = x+1, x+2, x+3, ... and stop at the first number y not in the set. The length of the streak is then simply y-x and we update our global best with that. Since we check each streak only once, this is overall O(n). This ran in 44 ms on the OJ, one of the fastest Python submissions.
+
+ public int longestConsecutive(int[] nums) {
+            Set<Integer> set = new HashSet<>();
+            for(int n : nums) {
+                set.add(n);
+            }
+            int best = 0;
+            for(int n : set) {
+                if(!set.contains(n - 1)) {  // only check for one direction
+                    int m = n + 1;
+                    while(set.contains(m)) {
+                        m++;
+                    }
+                    best = Math.max(best, m - n);
+                }
+            }
+            return best;
+        }
+
+
 /*
 思路： 非常巧的Solution，用Hashmap，和自己想的不一样。自己想的是不是可以用计数法来统计小于某个数的次数，但是Leetcode方法更巧。 其利用Hashmap，如果一个点是一个consevtive sequence的边界点，则它的Value就是对应的该sequence的长度。但是如果一个节点不是一个consevtive sequence的边界点，其也有对应的K以及V键值对在Hashmap里，但是这时候主要是用其K来避免判断重复元素，其V没有实际意义。对于任意一个新新加的元素N，如果已经在Hashmap里过了，表示出现了重复，直接跳过，否则N第一次出现的话，看看其左右大于或者小于1的数在不在Hashmap里，如果在的话，就要把N和左右两边的对应的序列里连起来（得到一个新的长度），同时将新的长度传播更新到新的序列左右两边的端点上。
 
